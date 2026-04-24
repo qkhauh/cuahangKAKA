@@ -1,0 +1,220 @@
+:root {
+  --primary-color: #dc2626; /* Red 600 */
+  --primary-hover: #b91c1c; /* Red 700 */
+  --secondary-color: #f87171; /* Red 400 */
+  --bg-color: #f8fafc; /* Slate 50 */
+  --card-bg: #ffffff;
+  --text-main: #0f172a; /* Slate 900 */
+  --text-muted: #475569; /* Slate 600 */
+  --glass-border: #e2e8f0; /* Slate 200 */
+}
+
+body {
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Glassmorphism utility - adapted for light theme */
+.glass-panel {
+  background: var(--card-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  border-radius: 1rem;
+}
+
+/* Navbar */
+.navbar-glass {
+  background: var(--primary-color) !important;
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.navbar-brand {
+  font-weight: 700;
+  color: white !important;
+  font-size: 1.5rem;
+}
+.nav-link {
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  padding: 0.5rem 1rem;
+}
+.nav-link:hover, .nav-link.active {
+  color: white !important;
+}
+
+/* Dropdown Hover Effect */
+.dropdown:hover .dropdown-menu {
+  display: block;
+  margin-top: 0;
+}
+.dropdown-menu {
+  display: none;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+  border: 1px solid var(--glass-border);
+}
+
+/* Search Bar */
+.search-form {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+}
+.search-form .form-control {
+  border-radius: 2rem;
+  padding-right: 2.5rem;
+  border: none;
+}
+.search-form .btn-search {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: var(--primary-color);
+}
+
+/* Cart Icon */
+.cart-icon {
+  color: white;
+  font-size: 1.25rem;
+  position: relative;
+  text-decoration: none;
+  margin-right: 1.5rem;
+}
+.cart-icon:hover {
+  color: rgba(255,255,255,0.8);
+}
+.cart-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: #f59e0b; /* Amber */
+  color: white;
+  border-radius: 50%;
+  font-size: 0.7rem;
+  padding: 0.2rem 0.4rem;
+  font-weight: bold;
+}
+
+/* Buttons */
+.btn-primary-custom {
+  background: var(--primary-color);
+  border: none;
+  color: white;
+  font-weight: 600;
+  padding: 0.6rem 1.5rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+}
+.btn-primary-custom:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.2);
+  color: white;
+}
+
+/* Forms */
+.form-control-glass {
+  background: #ffffff;
+  border: 1px solid var(--glass-border);
+  color: var(--text-main);
+  border-radius: 0.5rem;
+}
+.form-control-glass:focus {
+  background: #ffffff;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.25rem rgba(220, 38, 38, 0.1);
+  color: var(--text-main);
+}
+.form-label {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* Auth Container */
+.auth-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  padding: 2rem 0;
+}
+.auth-card {
+  width: 100%;
+  max-width: 450px;
+  padding: 2.5rem;
+  background: white;
+}
+
+/* Hero Section */
+.hero-section {
+  text-align: center;
+  padding: 6rem 1rem;
+  background: white;
+  border-bottom: 1px solid var(--glass-border);
+  margin-bottom: 3rem;
+}
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  color: var(--text-main);
+}
+.hero-subtitle {
+  font-size: 1.25rem;
+  color: var(--text-muted);
+  margin-bottom: 2rem;
+}
+
+/* Book Cards */
+.book-card {
+  background: white;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  border: 1px solid var(--glass-border) !important;
+  display: flex;
+  flex-direction: column;
+}
+.book-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+.book-img {
+  height: 200px;
+  object-fit: cover;
+  background: #f1f5f9;
+  border-bottom: 1px solid var(--glass-border);
+}
+.book-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.text-danger-custom {
+  color: var(--primary-color) !important;
+}
+.text-success-custom {
+  color: #059669 !important; /* Emerald 600 */
+}
+
+/* Dropdown styling */
+.dropdown-menu.glass-panel {
+  background: white !important;
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+.dropdown-item.text-light {
+  color: var(--text-main) !important;
+}
+.dropdown-item:hover {
+  background-color: #f1f5f9;
+}

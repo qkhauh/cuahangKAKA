@@ -88,3 +88,44 @@ INSERT INTO `mathang` (`id`, `tenmathang`, `mota`, `giagoc`, `giaban`, `soluongt
 (19, 'Giấy photo Double A A4/80 gsm', '<p>Giấy photo Double A A4/80 gsm...</p>', 108000, 97200, 20, 'images/products/g2.jpg', 6, 0, 0),
 (20, 'Tập Doraemon Fly - A5 5 Ô Ly 96 Trang ĐL 120g/m2 - Campus NB-ADFL96 (Màu Ngẫu Nhiên)', '<p>Chất liệu: Giấy ngoại nhập...</p>', 27000, 27000, 200, 'images/products/g3.jpg', 6, 4, 0),
 (21, 'Sổ Diary Icon The Sun', '<p>Sản phẩm sử dụng loại giấy láng...</p>', 39000, 35100, 50, 'images/products/g4.jpg', 6, 0, 0);
+
+-- Bảng hình ảnh mặt hàng (nhiều hình/sản phẩm)
+CREATE TABLE `hinhanh_mathang` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `mathang_id` int(11) NOT NULL,
+  `duongdan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `la_anh_chinh` tinyint(1) NOT NULL DEFAULT 0,
+  `thu_tu` int(11) NOT NULL DEFAULT 0,
+  `ngaytao` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`mathang_id`) REFERENCES `mathang` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Bảng đơn hàng
+CREATE TABLE `donhang` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nguoidung_id` int(11) DEFAULT NULL,
+  `hoten` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sodienthoai` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(150) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `diachi` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ghichu` text COLLATE utf8mb4_unicode_ci,
+  `tongtien` float NOT NULL DEFAULT 0,
+  `phuongthucthanhtoan` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `trangthai` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'chờ xử lý',
+  `ngaytao` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`nguoidung_id`) REFERENCES `nguoidung` (`id`) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- Bảng chi tiết đơn hàng
+CREATE TABLE `chitietdonhang` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `donhang_id` int(11) NOT NULL,
+  `mathang_id` int(11) NOT NULL,
+  `soluong` int(11) NOT NULL,
+  `dongia` float NOT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`donhang_id`) REFERENCES `donhang` (`id`) ON DELETE CASCADE,
+  FOREIGN KEY (`mathang_id`) REFERENCES `mathang` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
